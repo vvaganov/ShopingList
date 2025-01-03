@@ -1,14 +1,16 @@
 package com.example.shopinglist.domain
 
+import androidx.lifecycle.LiveData
+
 interface ShopListRepository {
 
     fun insertShopItem(item: ShopItem)
 
-    fun getShopList(): List<ShopItem>
+    fun getShopList(): LiveData<List<ShopItem>>
 
-    fun updateShopItem(idItem: Int)
+    fun updateShopItem(item: ShopItem)
 
     fun getShopItemById(idItem: Int): ShopItem
 
-    fun deleteShopItem(idItem: Int)
+    fun deleteShopItem(item: ShopItem)
 }
