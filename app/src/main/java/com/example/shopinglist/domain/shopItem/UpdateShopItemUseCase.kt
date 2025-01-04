@@ -1,4 +1,4 @@
-package com.example.shopinglist.domain
+package com.example.shopinglist.domain.shopItem
 
 class UpdateShopItemUseCase(private val shopListRepository: ShopListRepository) {
 
