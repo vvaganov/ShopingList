@@ -1,4 +1,4 @@
-package com.example.shopinglist.domain
+package com.example.shopinglist.domain.shopItem
 
 import androidx.lifecycle.LiveData
 

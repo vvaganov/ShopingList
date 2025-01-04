@@ -1,4 +1,4 @@
-package com.example.shopinglist.domain
+package com.example.shopinglist.domain.shopItem
 
 data class ShopItem(
 
