@@ -15,7 +15,7 @@ object ShopLIstRepositoryImpl : ShopListRepository {
 
     init {
 
-        for (i in 0 until 100) {
+        for (i in 0 until 10) {
             val item = ShopItem(name = "Name - $i", count = i, isActivated = Random.nextBoolean())
             insertShopItem(item)
         }
