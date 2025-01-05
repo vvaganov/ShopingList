@@ -1,7 +1,6 @@
 package com.example.shopinglist.presentation
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -10,12 +9,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shopinglist.R
+import com.example.shopinglist.presentation.ShowItemActivity.Companion.newIntentAddItem
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
-
     private lateinit var shopListAdapter: ShopListAdapter
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +34,11 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         viewModel.itemShopList.observe(this) { list ->
             shopListAdapter.submitList(list)
+        }
+        val buttonAddItem = findViewById<FloatingActionButton>(R.id.button_add_shop_item)
+        buttonAddItem.setOnClickListener {
+            val intent = newIntentAddItem(this)
+            startActivity(intent)
         }
     }
 
@@ -77,7 +85,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun itemClick() {
         shopListAdapter.onShopItemClickListener = { shopItem->
-            Log.i("!!!", "$shopItem")
+            val intent = ShowItemActivity.newIntentEditItem(this, shopItem.id)
+            startActivity(intent)
         }
     }
 
